@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using MVC_BLL;
+using MVC_DAL;
 namespace RealEstateApplication
 {
     public class Startup
@@ -22,6 +23,14 @@ namespace RealEstateApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            //Register Application Services
+            services.AddScoped<IAgentService, AgentService>();
+            services.AddScoped<IPropertyService, PropertyService>();
+            services.AddScoped<ILoggerService, LoggerService>();
+            services.AddScoped<IAgentRepositery, AgentRepositery>();
+            services.AddScoped<ILoggerRepositery, LoggerRepositery>();
+            services.AddScoped<IPropertyRepositery, PropertyRepositery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

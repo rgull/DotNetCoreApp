@@ -6,8 +6,15 @@
     <title>@ViewData["Title"] - RealEstateApplication</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
+        <link href="~/css/fonts.css" rel="stylesheet" />
+        <link href="~/css/jquery.css" rel="stylesheet" />
+        <link href="~/css/jquery_002.css" rel="stylesheet" />
+        <link href="~/css/normalize.css" rel="stylesheet" />
+        <link href="~/css/slick.css" rel="stylesheet" />
+        <link href="~/css/slick-theme.css" rel="stylesheet" />
+        <link href="~/css/style.css" rel="stylesheet" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -17,38 +24,371 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">RealEstateApplication</a>
+    <!--==============================Header=================================-->
+    <header id="header" class="c-header">
+        <div class="l-row l-row--logo h-clearfix">
+            <div class="c-header__logo">
+                <a href="http://fast-coding.com/house/index.html">
+                    <span class="c-header__logo-icon"></span>
+                    <span class="c-header__logo-txt">Houses.Forsale</span>
+                </a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <div class="c-header__login">
+                <div class="c-header__login-toggle h-clearfix">
+                    <div class="c-header__login-icon">
+                        <div class="c-header__login-avatar">
+                            <img src="Agent%20profile_files/agent1.png" alt="">
+                            <span class="c-header__user-notices c-header__user--has-notices">1</span>
+                        </div>
+                    </div>
+                    <div class="c-header__login-btn">
+                        <span class="c-header__login-txt">Login</span>
+                        <span class="c-header__login-carrot"></span>
+                        <span class="c-header__login-close l-close-btn"></span>
+                    </div>
+                </div>
+                <div class="l-dropdown l-dropdown--login">
+                    <form class="l-form l-login-form">
+                        <div class="l-form__holder">
+                            <div class="l-form__inner">
+                                <div class="l-form-row">
+                                    <div class="l-form-group">
+                                        <input class="l-form-control" id="inputEmailDropdown" required="" type="email">
+                                        <label for="inputEmailDropdown" class="l-form-label">email</label>
+                                        <span class="l-form-control-focus"></span>
+                                    </div>
+                                </div>
+                                <div class="l-form-row">
+                                    <div class="l-form-group">
+                                        <input class="l-form-control" id="inputPasswordDropdown" required="" type="password">
+                                        <label for="inputPasswordDropdown" class="l-form-label">password</label>
+                                        <span class="l-form-control-focus"></span>
+                                        <a href="#" class="l-form-link">Forgot Password?</a>
+                                    </div>
+                                </div>
+                                <div class="l-form-row l-form-row--submit l-row--center">
+                                    <button type="submit" class="l-btn l-btn-primary">Sign in</button>
+                                    <div class="l-form-text">
+                                        <a href="#" class="l-form-link">Create an Account</a>
+                                    </div>
+                                </div>
+                                <div class="l-form-row l-form-row--login-social">
+                                    <div class="l-divider l-divider--form l-divider--light"><span>or</span></div>
+                                    <div class="l-form-buttons">
+                                        <button type="button" class="l-btn l-btn-login l-btn-login--facebook">Sign in with Facebook</button>
+                                        <button type="button" class="l-btn l-btn-login l-btn-login--google">Sign in with Google</button>
+                                        <button type="button" class="l-btn l-btn-login l-btn-login--microsoft">Sign in with Microsoft</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <ul class="l-dropdown l-dropdown--user-menu">
+                    <li class="notices">
+                        <a href="#"><span class="c-header__user-notices c-header__user--has-notices">1</span> Notices</a>
+                    </li>
+                    <li>
+                        <a href="#">Account Settings</a>
+                    </li>
+                    <li>
+                        <a href="#">Saved Searches</a>
+                    </li>
+                    <li>
+                        <a href="#">Viewed Homes</a>
+                    </li>
+                    <li>
+                        <a href="#">Favorited Homes</a>
+                    </li>
+                    <li>
+                        <a href="#">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="c-header__nav">
+                <ul class="h-clearfix">
+                    <li class="has-dropdown">
+                        <span>Buy</span>
+                        <ul class="l-dropdown l-dropdown--left">
+                            <li class="user-location">
+                                84004 - Alpine
+                            </li>
+                            <li>
+                                <a href="#">All Homes</a>
+                            </li>
+                            <li>
+                                <a href="#">New Construction</a>
+                            </li>
+                            <li>
+                                <a href="#">Forclosures</a>
+                            </li>
+                            <li>
+                                <a href="#">Land</a>
+                            </li>
+                            <li>
+                                <a href="#">Recently Sold</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Sell</a>
+                    </li>
+                    <li>
+                        <a href="#">Neighborhood</a>
+                    </li>
+                    <li>
+                        <a href="#">Mortgage</a>
+                    </li>
+                    <li class="has-dropdown">
+                        <span>Agents</span>
+                        <ul class="l-dropdown l-dropdown--right">
+                            <li>
+                                <a href="#">Looking for an Agent</a>
+                            </li>
+                            <li>
+                                <a href="#">Advertising Solutions</a>
+                            </li>
+                            <li>
+                                <a href="#">Create Agent Profile</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-    </nav>
-    <div class="container body-content">
+    </header>
+    <button type="button" class="c-header__nav-toggle">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="c-header__nav-close l-close-btn"></span>
+    </button>
+    <!--==============================Content================================-->
+    <div id="content" class="c-content" style="padding-bottom: 309px;">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2018 - RealEstateApplication</p>
-        </footer>
+       
     </div>
-
+    <!--==============================Footer=================================-->
+    <footer id="footer" class="c-footer">
+        <div class="c-footer__equal-housing-logo"></div>
+        <div class="l-row l-row--footer-logo">
+            <div class="l-container">
+                <div class="c-footer__logo">
+                    <a href="http://fast-coding.com/house/index.html">Homes.Forsale</a>
+                </div>
+            </div>
+        </div>
+        <div class="l-row l-row--copyright">
+            <div class="l-container">
+                <ul class="l-list l-list--social c-footer__social">
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="l-list--social__icon">
+                                <img src="Agent%20profile_files/icon-instagram.svg" alt="">
+                            </span>
+                            <span class="l-list--social__icon--hover">
+                                <img src="Agent%20profile_files/icon-instagram-white.svg" alt="">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="l-list--social__icon">
+                                <img src="Agent%20profile_files/icon-twitter.svg" alt="">
+                            </span>
+                            <span class="l-list--social__icon--hover">
+                                <img src="Agent%20profile_files/icon-twitter-white.svg" alt="">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="l-list--social__icon">
+                                <img src="Agent%20profile_files/icon-facebook.svg" alt="">
+                            </span>
+                            <span class="l-list--social__icon--hover">
+                                <img src="Agent%20profile_files/icon-facebook-white.svg" alt="">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="l-list--social__icon">
+                                <img src="Agent%20profile_files/icon-linkedin.svg" alt="">
+                            </span>
+                            <span class="l-list--social__icon--hover">
+                                <img src="Agent%20profile_files/icon-linkedin-white.svg" alt="">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <span class="l-list--social__icon">
+                                <img src="Agent%20profile_files/icon-youtube.svg" alt="">
+                            </span>
+                            <span class="l-list--social__icon--hover">
+                                <img src="Agent%20profile_files/icon-youtube-white.svg" alt="">
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="c-footer__copyright">
+                    <p>
+                        © Copyright 2017, Real Estate Guides. All rights are reserved.
+                    </p>
+                    <p>
+                        Updated January 2016: By searching, you agree to the <a href="#">Terms of Use</a>, <a href="#">Privacy Policy</a> and <a href="#">End-User License Agreement.</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--======================== Sticky Footer ======================================-->
+    <footer id="footer-mobile" class="c-footer c-footer--mobile c-footer--mobile-agent">
+        <div class="c-footer__links c-footer__links--agent">
+            <a class="l-link l-link--action l-link--call" href="#"><span>Call</span></a>
+            <a class="l-link l-link--action l-link--contact" href="mailto:email@goes.here"><span>Contact</span></a>
+            <a class="l-link l-link--action l-link--review" href="#"><span>Leave Review</span></a>
+        </div>
+        <div class="c-footer__links c-footer__links--property">
+            <a class="l-link l-link--action l-link--save" href="#"><span>Save</span></a>
+            <a class="l-link l-link--action l-link--agent" href="#"><span>Agent</span></a>
+            <a class="l-link l-link--action l-link--direction" href="#"><span>Directions</span></a>
+            <a class="l-link l-link--action l-link--share" href="#"><span>Share</span></a>
+        </div>
+    </footer>
+    <!--======================== Mobile Navigation ==================================-->
+    <div class="c-mobile-wrap">
+        <div class="c-mobile-wrap__logo">
+            <a href="http://fast-coding.com/house/index.html">
+                <span class="c-mobile-wrap__logo-icon"></span>
+            </a>
+        </div>
+        <div class="c-mobile-wrap__nav">
+            <ul>
+                <li class="has-dropdown form-toggle">
+                    <span class="has-dropdown__title">My account</span>
+                    <ul class="l-dropdown--mobile">
+                        <li class="notices">
+                            <a href="#"><span class="c-header__user-notices c-header__user--has-notices">1</span> Notices</a>
+                        </li>
+                        <li>
+                            <a href="#">Account Settings</a>
+                        </li>
+                        <li>
+                            <a href="#">Saved Searches</a>
+                        </li>
+                        <li>
+                            <a href="#">Viewed Homes</a>
+                        </li>
+                        <li>
+                            <a href="#">Favorited Homes</a>
+                        </li>
+                        <li>
+                            <a href="#">Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <span class="has-dropdown__title">Buy</span>
+                    <ul class="l-dropdown--mobile">
+                        <li>
+                            <a href="#">All Homes</a>
+                        </li>
+                        <li>
+                            <a href="#">New Construction</a>
+                        </li>
+                        <li>
+                            <a href="#">Forclosures</a>
+                        </li>
+                        <li>
+                            <a href="#">Land</a>
+                        </li>
+                        <li>
+                            <a href="#">Recently Sold</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Sell</a>
+                </li>
+                <li>
+                    <a href="#">Neighborhood</a>
+                </li>
+                <li>
+                    <a href="#">Mortgage</a>
+                </li>
+                <li class="has-dropdown">
+                    <span class="has-dropdown__title">Agents</span>
+                    <ul class="l-dropdown--mobile">
+                        <li>
+                            <a href="#">Looking for an Agent</a>
+                        </li>
+                        <li>
+                            <a href="#">Advertising Solutions</a>
+                        </li>
+                        <li>
+                            <a href="#">Create Agent Profile</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--======================== Mobile Forms ================================-->
+    <div class="c-mobile-form-wrap">
+        <span class="c-mobile-form__close l-close-btn"></span>
+        <div class="c-mobile-form-wrap__inner">
+            <form class="l-form l-login-form l-login-form--mobile">
+                <div class="l-form__holder">
+                    <h3>Sign in</h3>
+                    <div class="l-form__inner">
+                        <div class="l-form-row">
+                            <div class="l-form-group">
+                                <input class="l-form-control" id="inputEmail_SignInFormMobile" required="" type="email">
+                                <label for="inputEmail_SignInFormMobile" class="l-form-label">email</label>
+                                <span class="l-form-control-focus"></span>
+                            </div>
+                        </div>
+                        <div class="l-form-row">
+                            <div class="l-form-group">
+                                <input class="l-form-control" id="inputPassword_SignInFormMobile" required="" type="password">
+                                <label for="inputPassword_SignInFormMobile" class="l-form-label">password</label>
+                                <span class="l-form-control-focus"></span>
+                                <a href="#" class="l-form-link">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="l-form-row l-form-row--submit l-row--center">
+                            <button type="submit" class="l-btn l-btn-primary">Sign in</button>
+                            <div class="l-form-text">
+                                <a href="#" class="l-form-link">Create an Account</a>
+                            </div>
+                        </div>
+                        <div class="l-form-row l-form-row--login-social">
+                            <div class="l-divider l-divider--form l-divider--light"><span>or</span></div>
+                            <div class="l-form-buttons">
+                                <button type="button" class="l-btn l-btn-login l-btn-login--facebook">Sign in with Facebook</button>
+                                <button type="button" class="l-btn l-btn-login l-btn-login--google">Sign in with Google</button>
+                                <button type="button" class="l-btn l-btn-login l-btn-login--microsoft">Sign in with Microsoft</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--======================== JavaScript ==================================-->
+    <!-- Placed at the end of the document so the pages load faster -->
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/Chart.js"></script>
+        <script src="~/js/custom.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="~/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="~/js/slick.js"></script>
+        <script src="~/js/waypoints.js"></script>
+        
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"

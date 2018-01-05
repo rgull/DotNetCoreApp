@@ -12,7 +12,8 @@ namespace RealEstateApplication.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            //return View();
+            return RedirectToAction("Index", "Agent");
         }
 
         public IActionResult About()
